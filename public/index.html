@@ -1,0 +1,135 @@
+<!--
+ * @Author: Mr_Yaoo 2316718372@qq.com
+ * @Date: 2023-05-22 15:36:57
+ * @LastEditors: Mr_Yaoo 2316718372@qq.com
+ * @LastEditTime: 2023-05-25 10:31:15
+ * @FilePath: \node_asset\public\index.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Website to Notion Ai</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/toastr.min.css">
+    <link rel="stylesheet" href="./assets/font/iconfont.css">
+</head>
+
+<body>
+    <div>
+        <img style="width: 45px;vertical-align: middle;" src="./image/logo.png" alt="" srcset="">
+        <span style="font-size: 28px;vertical-align: middle;">Website to Notion Ai <span
+                class="badge text-bg-danger">1.0</span></span>
+    </div>
+    <form id="urlForm" style="margin-left: 8px;">
+        <label for="url">网址:</label>
+        <input type="text" class="form-control" style="width: 800px;display: inline;" id="url" name="url">
+        <button id="requestId" type="submit" class="btn btn-primary iconfont icon-fasong1">请求</button>
+    </form>
+    <div class="container-val">
+        <div style="height: 100%;">
+            <p style="height: 30px;line-height: 80px;font-size: 14px;">
+                数据源字数：<span id="charCount">0</span>
+                <span style="color:red">--注意：只能分析前2000个字符</span>
+            </p>
+            <div id="leftMain">
+                <textarea id="result" class="form-control" style="width: 100%;height:80vh;resize: vertical;
+        overflow: auto;" oninput="countCharacters()"></textarea>
+            </div>
+        </div>
+
+        <div style="height: 100%;">
+            <p style="height: 30px;line-height: 30px;">提示词：
+                <input id="aiText" type="text" class="form-control" style="width: 500px;display: inline;"
+                    value="您好这是一个网站的信息，请简明要素重新排版有用数据,最好是中文回答">
+                <button id="analysisId" onclick="submitMessage()"
+                    class="btn btn-primary iconfont icon-wuguan">分析</button>
+                <!-- <button onclick="submitNotion()" class="btn btn-warning iconfont icon-baocun">保存到notion</button> -->
+                <button class="btn btn-warning iconfont icon-baocun" data-bs-toggle="modal"
+                    data-bs-target="#myModal">保存到notion</button>
+            </p>
+            <div id="rightMain">
+                <textarea id="GPTtext" class="form-control" style="width: 100%;height:80vh;resize: vertical;
+        overflow: auto;" oninput="countCharacters()"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹框 -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static"
+        aria-hidden="true">
+        <div class="modal-dialog" style="margin-top: 200px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>保存到notion</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- 表单内容 -->
+                    <div id="notionFormId" class="tab-content">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="new-tab" data-bs-toggle="tab" href="#new" role="tab"
+                                    aria-controls="new" aria-selected="true">新建</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="insert-tab" data-bs-toggle="tab" href="#insert" role="tab"
+                                    aria-controls="insert" aria-selected="false">插入</a>
+                            </li>
+                        </ul>
+                        <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="new-input"
+                                        style="margin: 8px 0;font-size: 14px;padding-left: 18px;">笔记名称</label>
+                                    <input type="text" class="form-control" id="new-input">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="insert" role="tabpanel" aria-labelledby="insert-tab">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="insert-input"
+                                        style="margin: 8px 0;font-size: 14px;padding-left: 18px;">选择笔记</label>
+                                    <select style="width: 466px;overflow: hidden;" id="insert-input" class="form-select"
+                                        aria-label="Default select example">
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- gif内容 -->
+                    <div id="loadingAnimation" style="display: none; text-align: center;">
+                        <!-- GIF 动画内容 -->
+                        <img src="./image/loading.gif" alt="Loading..." width="120" height="120">
+                    </div>
+                    <div id="successMessage" style="display: none;text-align: center;">
+                        <!-- 保存成功的提示内容 -->
+                        <p style="font-size: 22px;">保存成功 <span style="color: rgb(35, 223, 35);"
+                                class="iconfont icon-right-1"></span></p>
+                    </div>
+                    <div id="errorMessage" style="display: none;text-align: center;">
+                        <!-- 保存失败的提示内容 -->
+                        <p style=" font-size: 22px;">保存失败，关闭后重试 <span style="color: rgb(221, 36, 36);"
+                                class="iconfont icon-cuowukongxin"></span></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                    <button id="saveSubNotion" type="button" class="btn btn-primary"
+                        onclick="saveFormData()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/toastr.min.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+html,
+body {
+  padding: 8px;
+}
+
+.container-val {
+  height: 80%;
+  display: flex;
+}
+
+.container-val > div {
+  flex: 1;
+  margin: 0px 8px;
+  box-sizing: border-box;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* z-index:998; */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.loading-spinner {
+  position: absolute;
+  z-index:999;
+  top:0;
+  left: 0;
+  bottom: 0;
+  right:0;
+  margin:auto;
+  /* width: 100%; */
+  /* height:100%; */
+  /* 添加适当的加载效果样式，例如旋转动画或加载图标 */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  border-top-color: transparent;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#leftMain,#rightMain{
+  margin-top:28px
+}
+
+
+/* .rotate .icon-loading {
+    animation: spin 1s infinite linear;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+   */

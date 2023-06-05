@@ -1,0 +1,121 @@
+{
+  "id": "4082687",
+  "name": "read AI",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7947748",
+      "name": "错误空心",
+      "font_class": "cuowukongxin",
+      "unicode": "ed1a",
+      "unicode_decimal": 60698
+    },
+    {
+      "icon_id": "553353",
+      "name": "加载中",
+      "font_class": "jiazaizhong",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "9788943",
+      "name": "loading",
+      "font_class": "loading",
+      "unicode": "e70d",
+      "unicode_decimal": 59149
+    },
+    {
+      "icon_id": "24202587",
+      "name": "加载中",
+      "font_class": "top",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "429242",
+      "name": "对号",
+      "font_class": "right-1",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "637760",
+      "name": "对号",
+      "font_class": "duihao",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "1263376",
+      "name": "分析",
+      "font_class": "fenxi",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "2569880",
+      "name": "阅读",
+      "font_class": "yuedu",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    },
+    {
+      "icon_id": "3904580",
+      "name": "智能分析",
+      "font_class": "zhinengfenxi",
+      "unicode": "e699",
+      "unicode_decimal": 59033
+    },
+    {
+      "icon_id": "4933329",
+      "name": "符号-阅读",
+      "font_class": "fuhao-yuedu",
+      "unicode": "e72d",
+      "unicode_decimal": 59181
+    },
+    {
+      "icon_id": "5387519",
+      "name": "对号",
+      "font_class": "duihao1",
+      "unicode": "eaf1",
+      "unicode_decimal": 60145
+    },
+    {
+      "icon_id": "5800406",
+      "name": "保存",
+      "font_class": "baocun",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "5961321",
+      "name": "AI",
+      "font_class": "wuguan",
+      "unicode": "ec5f",
+      "unicode_decimal": 60511
+    },
+    {
+      "icon_id": "9929001",
+      "name": "save",
+      "font_class": "savebaocun",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "11519644",
+      "name": "发送",
+      "font_class": "fasong",
+      "unicode": "e743",
+      "unicode_decimal": 59203
+    },
+    {
+      "icon_id": "18211583",
+      "name": "发送",
+      "font_class": "fasong1",
+      "unicode": "e7ca",
+      "unicode_decimal": 59338
+    }
+  ]
+}
